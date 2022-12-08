@@ -111,7 +111,7 @@ public class LivroController {
             Conexao.abreConexao();
             PreparedStatement stmt = null;
 
-            stmt = Conexao.con.prepareStatement("INSERT INTO usuario (nome, usuario, senha, telefone, email) VALUES(?,?,md5(?),?,?)");
+            stmt = Conexao.con.prepareStatement("INSERT INTO livro (titulo, autor, genero, paginas) VALUES(?,?,?,?)");
             stmt.setString(1, objLivro.getTitulo());
             stmt.setString(2, objLivro.getAutor());            
             stmt.setString(3, objLivro.getGenero());
@@ -146,7 +146,7 @@ public class LivroController {
 
             String sql = "";
             sql = "SELECT id, titulo, autor";
-            sql += " FROM usuario ";
+            sql += " FROM livro ";
             sql += " ORDER BY id ";
             
             result = Conexao.stmt.executeQuery(sql);
