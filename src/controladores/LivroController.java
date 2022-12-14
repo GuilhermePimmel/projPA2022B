@@ -214,12 +214,12 @@ public class LivroController {
         PreparedStatement stmt = null;
         
         try {
-            stmt = Conexao.con.prepareStatement("UPDATE livro SET titulo=?, autor=?, genero=md5(?), paginas=? WHERE id=? ");
+            stmt = Conexao.con.prepareStatement("UPDATE livro SET titulo=?, autor=?, genero=?, paginas=? WHERE id=? ");
             stmt.setString(1, objLivro.getTitulo());
             stmt.setString(2, objLivro.getAutor());
             stmt.setString(3, objLivro.getGenero());
             stmt.setInt(4, objLivro.getPaginas());
-            stmt.setInt(6, objLivro.getId());
+            stmt.setInt(5, objLivro.getId());
             
             stmt.executeUpdate();
             

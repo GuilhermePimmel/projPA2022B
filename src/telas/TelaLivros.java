@@ -46,8 +46,8 @@ public class TelaLivros extends javax.swing.JFrame {
             btnIncluir.setEnabled(false);            
             btnAlterar.setEnabled(true);
             btnExcluir.setEnabled(true);
-            txtAutor.setEnabled(false);
-            txtAutor.setEditable(false);
+            txtAutor.setEnabled(true);
+            txtAutor.setEditable(true);
 
             
         }catch(Exception ex){
@@ -337,8 +337,8 @@ public class TelaLivros extends javax.swing.JFrame {
             String idLivro = jtbLivros.getModel()
             .getValueAt(linhaSelecionada, 0).toString(); // Primeira coluna da linha
 
-            //if(jtbUsuarios.isColumnSelected(2)){
-                LivroController objUsuarioController = new LivroController();
+            if(jtbLivros.isColumnSelected(2)){
+                LivroController objLivroController = new LivroController();
 
                 objLivro = objLivroController.buscar(Integer.parseInt(idLivro));
                 if (objLivro != null && objLivro.getId() > 0){
@@ -346,7 +346,7 @@ public class TelaLivros extends javax.swing.JFrame {
                 }else{
                     CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Usuário no BD!");
                 }
-            //}
+            }
 
         }catch(Exception ex){
             CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(), 'e');
